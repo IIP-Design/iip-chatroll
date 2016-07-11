@@ -14,9 +14,16 @@ function iip_chatroll_scripts() {
 
 add_action('init', 'iip_chatroll_styles');
 function iip_chatroll_styles() {
+
     wp_register_style( 'iip_chatroll_style', plugins_url('css/iip-chatroll.css', __FILE__) );
+    wp_register_style( 'iip_chatroll_style_admin', plugins_url('css/iip-chatroll-admin.css', __FILE__) );
+
+
+    wp_enqueue_style( 'iip_chatroll_style' );
+    
     if ( is_admin() )
-      wp_enqueue_style( 'iip_chatroll_style' );
+      wp_enqueue_style( 'iip_chatroll_style_admin' );
+
 }
 
 add_shortcode('iip_chatroll', 'iip_chatroll_shortcode');

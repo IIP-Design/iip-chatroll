@@ -1,3 +1,9 @@
-#TB_ajaxContent {
-  overflow: scroll;
+@media (max-width: 782px) {
+  .iip_chatroll {
+    position: relative!important;
+    left: inherit!important;
+    right: inherit!important;
+    bottom: inherit!important;
+    z-index: 1!important;
+  }
 }
