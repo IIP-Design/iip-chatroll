@@ -60,7 +60,7 @@ function iip_chatroll_tinymce_button($context) {
     $container_id = 'add_chatroll_form';
     $title = __('Insert Chatroll', 'iip-chatroll');
 
-    $context .= "<a class='thickbox button' style='padding: 4px 6px' title='{$title}' id='add_chatroll'
+    $context .= "<a class='thickbox button' title='{$title}' id='add_chatroll'
     href='#TB_inline?width=600&height=800&inlineId={$container_id}'> Add Chatroll</a>";
 
     return $context;
