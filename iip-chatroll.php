@@ -23,11 +23,13 @@ function iip_chatroll_shortcode($atts, $content=null) {
                   'id' => '',
                   'name' => '',
                   'apikey' => '',
-                  'domain' => ''
+                  'domain' => '',
+                  'offsetx' => '20',
+                  'offsety' => ''
                   ), $atts
             ));
 
-    $shortcode = '<iframe width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://'.$domain.'/embed/chat/'.$name.'?id='.$id.'&platform=html"></iframe>';
+    $shortcode = '<iframe class="chatroll" style="position: fixed; right: '.$offsetx.'px; bottom: '.$offsety.'px; z-index:9999; border:1px solid #eee;"  width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://'.$domain.'/embed/chat/'.$name.'?id='.$id.'&platform=html"></iframe>';
     return $shortcode;
 }
 
@@ -61,8 +63,10 @@ function iip_chatroll_tinymce() {
         var name = jQuery('#chatroll_name').val();
         var apikey = jQuery('#chatroll_apikey').val();
         var domain = jQuery('#chatroll_domain').val();
+        var offsetx = jQuery('#chatroll_offsetx').val();
+        var offsety = jQuery('#chatroll_offsety').val();
 
-        window.send_to_editor("[iip_chatroll width=\"" + width + "\" height=\"" + height + "\" id=\"" + id + "\" name=\"" + name + "\" apikey=\"" + apikey + "\" domain=\"" + domain + "\" ]");
+        window.send_to_editor("[iip_chatroll width=\"" + width + "\" height=\"" + height + "\" id=\"" + id + "\" name=\"" + name + "\" apikey=\"" + apikey + "\" domain=\"" + domain + "\" offsetX=\"" + offsetx + "\" offsetY=\"" + offsety + "\" ]");
     }
     </script>
 
@@ -101,6 +105,14 @@ function iip_chatroll_tinymce() {
                             <tr>
                                 <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_domain"><?php _e('Domain', 'iip-chatroll'); ?></label></td>
                                 <td style="padding: 0 0 10px;"><input type="text" id="chatroll_domain" size="40" value="" /></td>
+                            </tr>
+                            <tr>
+                                <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_offsetx"><?php _e('Offset X', 'iip-chatroll'); ?></label></td>
+                                <td style="padding: 0 0 10px;"><input type="text" id="chatroll_offsetx" size="4" value="20" /></td>
+                            </tr>
+                            <tr>
+                                <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_offsety"><?php _e('Offset Y', 'iip-chatroll'); ?></label></td>
+                                <td style="padding: 0 0 10px;"><input type="text" id="chatroll_offsety" size="4" value="0" /></td>
                             </tr>
                         </tbody>
                     </table>
