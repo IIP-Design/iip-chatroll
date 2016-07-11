@@ -24,11 +24,12 @@ function iip_chatroll_shortcode($atts, $content=null) {
                   'name' => '',
                   'apikey' => '',
                   'domain' => '',
+                  'align' => 'right',
                   'offsetx' => '20',
                   'offsety' => ''
                   ), $atts
             ));
-    $shortcode = '<style type="text/css">.iip_chatroll{position: fixed; right: '.$offsetx.'px; bottom: '.$offsety.'px; z-index:9999; border:1px solid #eee;}</style>';
+    $shortcode = '<style type="text/css">.iip_chatroll{position: fixed; '.$align.': '.$offsetx.'px; bottom: '.$offsety.'px; z-index:9999; border:1px solid #eee;}</style>';
     $shortcode .= '<iframe class="iip_chatroll" width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://'.$domain.'/embed/chat/'.$name.'?id='.$id.'&platform=html"></iframe>';
     return $shortcode;
 }
@@ -48,7 +49,7 @@ function iip_chatroll_tinymce_button($context) {
     $title = __('Insert Chatroll', 'iip-chatroll');
 
     $context .= "<a class='thickbox button' style='padding: 4px 6px' title='{$title}' id='add_chatroll'
-    href='#TB_inline?width=600&height=495&inlineId={$container_id}'> Add Chatroll</a>";
+    href='#TB_inline?width=600&height=800&inlineId={$container_id}'> Add Chatroll</a>";
 
     return $context;
 }
@@ -63,10 +64,11 @@ function iip_chatroll_tinymce() {
         var name = jQuery('#chatroll_name').val();
         var apikey = jQuery('#chatroll_apikey').val();
         var domain = jQuery('#chatroll_domain').val();
+        var align = jQuery('#chatroll_align').val();
         var offsetx = jQuery('#chatroll_offsetx').val();
         var offsety = jQuery('#chatroll_offsety').val();
 
-        window.send_to_editor("[iip_chatroll width=\"" + width + "\" height=\"" + height + "\" id=\"" + id + "\" name=\"" + name + "\" apikey=\"" + apikey + "\" domain=\"" + domain + "\" offsetX=\"" + offsetx + "\" offsetY=\"" + offsety + "\" ]");
+        window.send_to_editor("[iip_chatroll width=\"" + width + "\" height=\"" + height + "\" id=\"" + id + "\" name=\"" + name + "\" apikey=\"" + apikey + "\" domain=\"" + domain + "\" align=\"" + align + "\" offsetX=\"" + offsetx + "\" offsetY=\"" + offsety + "\" ]");
     }
     </script>
 
@@ -105,6 +107,15 @@ function iip_chatroll_tinymce() {
                             <tr>
                                 <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_domain"><?php _e('Domain', 'iip-chatroll'); ?></label></td>
                                 <td style="padding: 0 0 10px;"><input type="text" id="chatroll_domain" size="40" value="" /></td>
+                            </tr>
+                            <tr>
+                                <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_align"><?php _e('Alignment', 'iip-chatroll'); ?></label></td>
+                                <td style="padding: 0 0 10px;">
+                                    <select id="chatroll_align">
+                                        <option value="right">Right</option>
+                                        <option value="left">Left</option>
+                                    </select><br/>
+                                </td>
                             </tr>
                             <tr>
                                 <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_offsetx"><?php _e('Offset X', 'iip-chatroll'); ?></label></td>
