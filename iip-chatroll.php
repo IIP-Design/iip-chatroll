@@ -35,24 +35,23 @@ function iip_chatroll_shortcode($atts, $content=null) {
     TinyMCE
 */
 
-    add_action('media_buttons_context', 'iip_chatroll_tinymce_button');
+add_action('media_buttons_context', 'iip_chatroll_tinymce_button');
 
 // Add content for inserting a chatroll
-    add_action('admin_footer', 'iip_chatroll_tinymce');
+add_action('admin_footer', 'iip_chatroll_tinymce');
 
 // TinyMCE Button for the shortcode
-    function iip_chatroll_tinymce_button($context) {
+function iip_chatroll_tinymce_button($context) {
+    $container_id = 'add_chatroll_form';
+    $title = __('Insert Chatroll', 'iip-chatroll');
 
-      $container_id = 'add_chatroll_form';
-      $title = __('Insert Chatroll', 'iip-chatroll');
+    $context .= "<a class='thickbox button' style='padding: 4px 6px' title='{$title}' id='add_chatroll'
+    href='#TB_inline?width=600&height=495&inlineId={$container_id}'> Add Chatroll</a>";
 
-      $context .= "<a class='thickbox button' style='padding: 4px 6px' title='{$title}' id='add_chatroll'
-      href='#TB_inline?width=600&height=495&inlineId={$container_id}'> Add Chatroll</a>";
+    return $context;
+}
 
-      return $context;
-  }
-
-  function iip_chatroll_tinymce() {
+function iip_chatroll_tinymce() {
     ?>
     <script type="text/javascript">
     function insertChatroll(){
@@ -67,18 +66,18 @@ function iip_chatroll_shortcode($atts, $content=null) {
     }
     </script>
 
-<div id="add_chatroll_form" style="display:none;" class="thickbox" >
-    <div class="wrap">
-        <div>
-            <div style="padding:15px 15px 0 15px;">
-                <h3 style="color:#5A5A5A!important; font-family:Georgia,Times New Roman,Times,serif!important; font-size:1.8em!important; font-weight:normal!important;"><?php _e('Insert Chatroll', 'iip-chatroll'); ?></h3>
-                <span>
-                    <?php _e('Configure your Chatroll and add it to your post', 'iip-chatroll'); ?>
-                </span>
-            </div>
-            <div style="padding:15px 15px 0 15px;">
-                <table>
-                    <tbody>
+    <div id="add_chatroll_form" style="display:none;" class="thickbox" >
+        <div class="wrap">
+            <div>
+                <div style="padding:15px 15px 0 15px;">
+                    <h3 style="color:#5A5A5A!important; font-family:Georgia,Times New Roman,Times,serif!important; font-size:1.8em!important; font-weight:normal!important;"><?php _e('Insert Chatroll', 'iip-chatroll'); ?></h3>
+                    <span>
+                        <?php _e('Configure your Chatroll and add it to your post', 'iip-chatroll'); ?>
+                    </span>
+                </div>
+                <div style="padding:15px 15px 0 15px;">
+                    <table>
+                        <tbody>
                             <tr>
                                 <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_width"><?php _e('Width', 'iip-chatroll'); ?></label></td>
                                 <td style="padding: 0 0 10px;"><input type="text" id="chatroll_width" size="5" value="450" /></td>
