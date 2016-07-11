@@ -1,0 +1,16 @@
+{
+    "name": "IIP-Design/iip-chatroll",
+    "type": "wordpress-plugin",
+    "description" : "Chatroll Shortcode for IIP Properties",
+    "authors": [
+        {
+            "name": "Office of Design, Bureau of International Information Programs",
+            "email": "gustassj@america.gov"
+        }
+    ],
+    "minimum-stability": "stable",
+    "version": "0.0.1",
+    "require": {
+       "composer/installers": "~1.0"
+    }
+}
