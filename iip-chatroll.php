@@ -7,11 +7,16 @@
  * License: GPLv2 or later
  */
 
-define( 'IIP_CHATROLL_URL', plugin_dir_url(__FILE__) );
-
 add_action('init', 'iip_chatroll_scripts');
 function iip_chatroll_scripts() {
 
+}
+
+add_action('init', 'iip_chatroll_styles');
+function iip_chatroll_styles() {
+    wp_register_style( 'iip_chatroll_style', plugins_url('css/iip-chatroll.css', __FILE__) );
+    if ( is_admin() )
+      wp_enqueue_style( 'iip_chatroll_style' );
 }
 
 add_shortcode('iip_chatroll', 'iip_chatroll_shortcode');
