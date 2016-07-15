@@ -1,12 +1,3 @@
-@media (max-width: 782px) {
-  .iip_chatroll {
-    position: relative!important;
-    left: inherit!important;
-    right: inherit!important;
-    bottom: inherit!important;
-    z-index: 1!important;
-  }
-}
 .iip_toggle, .iip_one, .iip_two {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -52,4 +43,18 @@
 
 .reduced {
   width: 200px!important;
+}
+
+@media (max-width: 782px) {
+  .iip_chatroll {
+    position: relative!important;
+    left: inherit!important;
+    right: inherit!important;
+    bottom: inherit!important;
+    z-index: 1!important;
+  }
+  .chatroll_topbar, .iip_chatroll iframe, .reduced {
+    width: 100%!important;
+  }
+
 }
