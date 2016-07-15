@@ -2,6 +2,7 @@
   position: fixed;
   z-index:99999;
   border: 1px solid #262626;
+  background: #fff;
 }
 
 .chatroll_topbar {
