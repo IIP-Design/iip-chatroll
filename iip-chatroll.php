@@ -7,22 +7,18 @@
  * License: GPLv2 or later
  */
 
-add_action('init', 'iip_chatroll_scripts');
+add_action('wp_enqueue_scripts', 'iip_chatroll_scripts');
 function iip_chatroll_scripts() {
-
+    wp_enqueue_script('iip_chatroll_script', plugins_url('js/iip-chatroll.js', __FILE__), array('jquery') );
 }
 
-add_action('init', 'iip_chatroll_styles');
+add_action('wp_enqueue_scripts', 'iip_chatroll_styles');
 function iip_chatroll_styles() {
 
-    wp_register_style( 'iip_chatroll_style', plugins_url('css/iip-chatroll.css', __FILE__) );
-    wp_register_style( 'iip_chatroll_style_admin', plugins_url('css/iip-chatroll-admin.css', __FILE__) );
-
-
-    wp_enqueue_style( 'iip_chatroll_style' );
+    wp_enqueue_style( 'iip_chatroll_style', plugins_url('css/iip-chatroll.css', __FILE__) );
     
     if ( is_admin() )
-      wp_enqueue_style( 'iip_chatroll_style_admin' );
+        wp_enqueue_style( 'iip_chatroll_style_admin', plugins_url('css/iip-chatroll-admin.css', __FILE__) );
 
 }
 
@@ -41,8 +37,10 @@ function iip_chatroll_shortcode($atts, $content=null) {
                   'offsety' => ''
                   ), $atts
             ));
-    $shortcode = '<style type="text/css">.iip_chatroll{position: fixed; '.$align.': '.$offsetx.'px; bottom: '.$offsety.'px; z-index:9999; border:1px solid #eee;}</style>';
-    $shortcode .= '<iframe class="iip_chatroll" width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://'.$domain.'/embed/chat/'.$name.'?id='.$id.'&platform=html"></iframe>';
+    $shortcode = '<style type="text/css">.iip_chatroll{position: fixed; '.$align.': '.$offsetx.'px; bottom: '.$offsety.'px; z-index:99999; border: 1px solid #262626;}.chatroll_topbar{width:'.$width.'px; padding: 4px 8px; background: #262626; color: #fff}</style>';
+    $shortcode .= '<div class="iip_chatroll"><div class="chatroll_topbar">Chat<div class="icon"><div class="one"></div><div class="two maximized"></div></div></div>';
+    $shortcode .= '<iframe class="" width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://'.$domain.'/embed/chat/'.$name.'?id='.$id.'&platform=html"></iframe>';
+    $shortcode .= '</div>';
     return $shortcode;
 }
 
