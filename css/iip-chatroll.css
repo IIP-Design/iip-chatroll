@@ -7,13 +7,13 @@
     z-index: 1!important;
   }
 }
-.icon, .one, .two {
+.iip_toggle, .iip_one, .iip_two {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-.one, .two {
+.iip_one, .iip_two {
   position: absolute;
   border-radius: 3px;
   background: #fff;
@@ -23,21 +23,21 @@
   transition: 400ms all ease-out;
 }
 
-.one {
+.iip_one {
   top: 11px;
   left: 3px;
   right: 3px;
   height: 3px;
 }
 
-.two {
+.iip_two {
   top: 3px;
   left: 11px;
   bottom: 3px;
   width: 3px;
 }
 
-.icon {
+.iip_toggle {
   position: relative;
   width: 25px;
   height: 25px;
