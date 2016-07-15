@@ -1,5 +1,5 @@
 {
-    "name": "IIP-Design/iip-chatroll",
+    "name": "iip-design/iip-chatroll",
     "type": "wordpress-plugin",
     "description" : "Chatroll Shortcode for IIP Properties",
     "authors": [
