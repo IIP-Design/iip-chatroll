@@ -38,7 +38,7 @@ function iip_chatroll_shortcode($atts, $content=null) {
                   ), $atts
             ));
     $shortcode = '<style type="text/css">.iip_chatroll{'.$align.': '.$offsetx.'px; bottom: '.$offsety.'px;}.chatroll_topbar{width:'.$width.'px;}</style>';
-    $shortcode .= '<div class="iip_chatroll"><div class="chatroll_topbar">Chat<div class="iip_toggle"><div class="iip_one"></div><div class="iip_two maximized"></div></div></div>';
+    $shortcode .= '<div class="iip_chatroll"><div class="chatroll_topbar">Chat<div class="iip_toggle"><div class="iip_one"></div><div class="iip_two"></div></div></div>';
     $shortcode .= '<iframe class="" width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://'.$domain.'/embed/chat/'.$name.'?id='.$id.'&platform=html"></iframe>';
     $shortcode .= '</div>';
     return $shortcode;
