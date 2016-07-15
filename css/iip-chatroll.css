@@ -49,3 +49,7 @@
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+
+.reduced {
+  width: 200px!important;
+}
