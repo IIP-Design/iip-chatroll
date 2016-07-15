@@ -37,7 +37,7 @@ function iip_chatroll_shortcode($atts, $content=null) {
                   'offsety' => ''
                   ), $atts
             ));
-    $shortcode = '<style type="text/css">.iip_chatroll{position: fixed; '.$align.': '.$offsetx.'px; bottom: '.$offsety.'px; z-index:99999; border: 1px solid #262626;}.chatroll_topbar{width:'.$width.'px; padding: 4px 8px; background: #262626; color: #fff}</style>';
+    $shortcode = '<style type="text/css">.iip_chatroll{'.$align.': '.$offsetx.'px; bottom: '.$offsety.'px;}.chatroll_topbar{width:'.$width.'px;}</style>';
     $shortcode .= '<div class="iip_chatroll"><div class="chatroll_topbar">Chat<div class="iip_toggle"><div class="iip_one"></div><div class="iip_two maximized"></div></div></div>';
     $shortcode .= '<iframe class="" width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://'.$domain.'/embed/chat/'.$name.'?id='.$id.'&platform=html"></iframe>';
     $shortcode .= '</div>';
