@@ -113,7 +113,7 @@ function iip_chatroll_tinymce() {
                             </tr>
                             <tr>
                                 <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_name"><?php _e('Name', 'iip-chatroll'); ?></label></td>
-                                <td style="padding: 0 0 10px;"><input type="text" id="chatroll_name" size="10" value="" /></td>
+                                <td style="padding: 0 0 10px;"><input type="text" id="chatroll_name" size="20" value="" /></td>
                             </tr>
                             <tr>
                                 <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_domain"><?php _e('Domain', 'iip-chatroll'); ?></label></td>
