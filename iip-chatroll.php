@@ -35,7 +35,7 @@ function iip_chatroll_shortcode($atts, $content=null) {
                   'domain' => '',
                   'align' => 'right',
                   'offsetx' => '20',
-                  'offsety' => ''
+                  'offsety' => '0'
                   ), $atts
             ));
 
