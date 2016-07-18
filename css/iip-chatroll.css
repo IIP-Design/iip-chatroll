@@ -8,7 +8,7 @@
 .chatroll_topbar {
   cursor: pointer;
   padding: 4px 8px; 
-  background: #07182e; 
+  background: #222222; 
   color: #fff;
 }
 
@@ -49,6 +49,8 @@
 
 .reduced {
   width: 200px!important;
+  border: 1px solid #777;
+  border-bottom: none;
 }
 
 @media (max-width: 782px) {
