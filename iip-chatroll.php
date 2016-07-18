@@ -31,8 +31,7 @@ function iip_chatroll_shortcode($atts, $content=null) {
                   'height' => '350',
                   'id' => '',
                   'name' => '',
-                  'apikey' => '',
-                  'domain' => '',
+                  'domain' => 'chatroll-cloud-1.com',
                   'align' => 'right',
                   'offsetx' => '20',
                   'offsety' => '0'
@@ -75,13 +74,12 @@ function iip_chatroll_tinymce() {
         var width = jQuery('#chatroll_width').val();
         var id = jQuery('#chatroll_id').val();
         var name = jQuery('#chatroll_name').val();
-        var apikey = jQuery('#chatroll_apikey').val();
         var domain = jQuery('#chatroll_domain').val();
         var align = jQuery('#chatroll_align').val();
         var offsetx = jQuery('#chatroll_offsetx').val();
         var offsety = jQuery('#chatroll_offsety').val();
 
-        window.send_to_editor("[iip_chatroll title=\"" + title + "\" width=\"" + width + "\" height=\"" + height + "\" id=\"" + id + "\" name=\"" + name + "\" apikey=\"" + apikey + "\" domain=\"" + domain + "\" align=\"" + align + "\" offsetX=\"" + offsetx + "\" offsetY=\"" + offsety + "\" ]");
+        window.send_to_editor("[iip_chatroll title=\"" + title + "\" width=\"" + width + "\" height=\"" + height + "\" id=\"" + id + "\" name=\"" + name + "\" domain=\"" + domain + "\" align=\"" + align + "\" offsetX=\"" + offsetx + "\" offsetY=\"" + offsety + "\" ]");
     }
     </script>
 
@@ -118,12 +116,8 @@ function iip_chatroll_tinymce() {
                                 <td style="padding: 0 0 10px;"><input type="text" id="chatroll_name" size="10" value="" /></td>
                             </tr>
                             <tr>
-                                <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_apikey"><?php _e('API Key', 'iip-chatroll'); ?></label></td>
-                                <td style="padding: 0 0 10px;"><input type="text" id="chatroll_apikey" size="30" value="" /></td>
-                            </tr>
-                            <tr>
                                 <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_domain"><?php _e('Domain', 'iip-chatroll'); ?></label></td>
-                                <td style="padding: 0 0 10px;"><input type="text" id="chatroll_domain" size="40" value="" /></td>
+                                <td style="padding: 0 0 10px;"><input type="text" id="chatroll_domain" size="40" value="chatroll-cloud-1.com" /></td>
                             </tr>
                             <tr>
                                 <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_align"><?php _e('Alignment', 'iip-chatroll'); ?></label></td>
