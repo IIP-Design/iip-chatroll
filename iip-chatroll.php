@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Chatroll Shortcode for IIP Properties
  * Description: A simple shortcode to display a chatroll on IIP properties.
- * Version: 0.0.1
+ * Version: 1.0.0
  * Author: Scott Gustas
  * License: GPLv2 or later
  */
