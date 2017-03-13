@@ -32,3 +32,20 @@ function insertChatroll(){
 
     window.send_to_editor("[iip_chatroll title=\"" + title + "\" width=\"" + width + "\" height=\"" + height + "\" id=\"" + id + "\" name=\"" + name + "\" domain=\"" + domain + "\" align=\"" + align + "\" offsetX=\"" + offsetx + "\" offsetY=\"" + offsety + "\" ]");
 }
+
+jQuery(document).ready(function($){
+    $( "#countdown_date" ).datepicker({
+        dateFormat: "yy-mm-dd"
+    });
+    $('#countdown_time').timepicker({
+        timeFormat: 'h:mm p',
+        interval: 15,
+        minTime: '0',
+        maxTime: '11:45pm',
+        startTime: '0:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true,
+        zindex: 100051
+    });
+});

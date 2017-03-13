@@ -52,3 +52,8 @@ div.tab button.active {
 .default {
   display: block;
 }
+
+/* Datepicker */
+.ui-datepicker {
+  background: #efefef;
+}

@@ -14,7 +14,8 @@ function iip_interactive_scripts() {
 
 add_action('admin_enqueue_scripts', 'iip_interactive_admin_scripts');
 function iip_interactive_admin_scripts() {
-    wp_enqueue_script('iip_interactive_script_admin', plugins_url('js/iip-interactive-admin.js', __FILE__), array('jquery') );
+    wp_enqueue_script('iip_interactive_script_admin', plugins_url('js/iip-interactive-admin.js', __FILE__), array('jquery', 'jquery-ui-datepicker') );
+    wp_enqueue_script('jquery_timepicker', plugins_url('js/jquery.timepicker.min.js', __FILE__) );
 }
 
 add_action('wp_enqueue_scripts', 'iip_interactive_styles');
@@ -25,6 +26,8 @@ function iip_interactive_styles() {
 add_action('admin_enqueue_scripts', 'iip_interactive_admin_styles');
 function iip_interactive_admin_styles() {
     wp_enqueue_style( 'iip_interactive_style_admin', plugins_url('css/iip-interactive-admin.css', __FILE__) );
+    wp_enqueue_style( 'jquery_ui_theme', plugins_url('css/jquery-ui-theme.css', __FILE__) );
+    wp_enqueue_style( 'jquery_timepicker_css', plugins_url('css/jquery.timepicker.min.css', __FILE__) );
 }
 
 add_shortcode('iip_chatroll', 'iip_chatroll_shortcode');
@@ -191,6 +194,24 @@ function iip_interactive_tinymce() {
                     <span>
                         <?php _e('Configure your countdown and add it to your post', 'iip-interactive'); ?>
                     </span>
+                                        <div>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_date"><?php _e('Set Date', 'iip-chatroll'); ?></label></td>
+                                    <td style="padding: 0 0 10px;"><input id="countdown_date" /></td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_time"><?php _e('Set Time', 'iip-chatroll'); ?></label></td>
+                                    <td style="padding: 0 0 10px;"><input id="countdown_time" class="timepicker" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <input type="button" class="button-primary" value="<?php _e('Insert Countdown', 'iip-interactive'); ?>" onclick="insertCountdown();"/>
+                        <a class="button" style="color:#bbb;" href="#" onclick="tb_remove(); return false;"><?php _e('Cancel', 'iip-interactive'); ?></a>
+                    </div>
                 </div>
 
                 <div id="calendar" class="tabcontent">
