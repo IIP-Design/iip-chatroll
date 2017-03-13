@@ -57,22 +57,37 @@ add_shortcode('iip_countdown', 'iip_countdown_shortcode');
 function iip_countdown_shortcode($atts, $content=null) {
     extract(shortcode_atts(
             array(
-                  'title' => 'Chat',
-                  'width' => '450',
-                  'height' => '350',
-                  'id' => '',
-                  'name' => '',
-                  'domain' => 'chatroll-cloud-1.com',
-                  'align' => 'right',
-                  'offsetx' => '20',
-                  'offsety' => '0'
+                  'date' => '',
+                  'time' => '',
                   ), $atts
             ));
+    $display = date("l, F j, Y", strtotime($date));
 
-    $shortcode = '<style type="text/css">.iip_chatroll{'.$align.': '.$offsetx.'px; bottom: '.$offsety.'px;}.chatroll_topbar{width:'.$width.'px;}</style>';
-    $shortcode .= '<div class="iip_chatroll"><div class="chatroll_topbar">'.$title.'<div class="iip_toggle"><div class="iip_one"></div><div class="iip_two"></div></div></div>';
-    $shortcode .= '<iframe class="" width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://'.$domain.'/embed/chat/'.$name.'?id='.$id.'&platform=html"></iframe>';
-    $shortcode .= '</div>';
+    $shortcode .= '<div class="iip_countdown">
+                    <input type="hidden" id="datetime" value="'.$date.' '.$time.'" />
+                    <div id="clockwrap">
+                      <div id="clockdiv">
+                        <h1>'.$display.' at '.$time.'</h1>
+                        <div>
+                          <span class="days"></span>
+                          <div class="smalltext">Days</div>
+                        </div>
+                        <div>
+                          <span class="hours"></span>
+                          <div class="smalltext">Hours</div>
+                        </div>
+                        <div>
+                          <span class="minutes"></span>
+                          <div class="smalltext">Minutes</div>
+                        </div>
+                        <div>
+                          <span class="seconds"></span>
+                          <div class="smalltext">Seconds</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>';
+
     return $shortcode;
 }
 
@@ -194,7 +209,7 @@ function iip_interactive_tinymce() {
                     <span>
                         <?php _e('Configure your countdown and add it to your post', 'iip-interactive'); ?>
                     </span>
-                                        <div>
+                    <div>
                         <table>
                             <tbody>
                                 <tr>
@@ -203,7 +218,7 @@ function iip_interactive_tinymce() {
                                 </tr>
                                 <tr>
                                     <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_time"><?php _e('Set Time', 'iip-chatroll'); ?></label></td>
-                                    <td style="padding: 0 0 10px;"><input id="countdown_time" class="timepicker" /></td>
+                                    <td style="padding: 0 0 10px;"><input id="countdown_time" /></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -219,6 +234,28 @@ function iip_interactive_tinymce() {
                     <span>
                         <?php _e('Configure your add to calendar button and add it to your post', 'iip-interactive'); ?>
                     </span>
+                    <div>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_text"><?php _e('Button Text', 'iip-chatroll'); ?></label></td>
+                                    <td style="padding: 0 0 10px;"><input type="text" id="calendar_text" size="24" maxlength="24" value="Add to Calendar" /></td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_date"><?php _e('Set Date', 'iip-chatroll'); ?></label></td>
+                                    <td style="padding: 0 0 10px;"><input id="calendar_date" /></td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_time"><?php _e('Set Time', 'iip-chatroll'); ?></label></td>
+                                    <td style="padding: 0 0 10px;"><input id="calendar_time" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <input type="button" class="button-primary" value="<?php _e('Insert Add to Calendar', 'iip-interactive'); ?>" onclick="insertCalendar();"/>
+                        <a class="button" style="color:#bbb;" href="#" onclick="tb_remove(); return false;"><?php _e('Cancel', 'iip-interactive'); ?></a>
+                    </div>
                 </div>
             </div>
         </div>

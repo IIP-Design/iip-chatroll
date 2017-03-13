@@ -33,11 +33,42 @@ function insertChatroll(){
     window.send_to_editor("[iip_chatroll title=\"" + title + "\" width=\"" + width + "\" height=\"" + height + "\" id=\"" + id + "\" name=\"" + name + "\" domain=\"" + domain + "\" align=\"" + align + "\" offsetX=\"" + offsetx + "\" offsetY=\"" + offsety + "\" ]");
 }
 
+function insertCountdown(){
+    var countDate = jQuery('#countdown_date').val();
+    var countTime = jQuery('#countdown_time').val();
+
+    window.send_to_editor("[iip_countdown date=\"" + countDate + "\" time=\"" + countTime + "\" ]");
+}
+
+function insertCalendar(){
+    var calText = jQuery('#calendar_text').val();
+    var calDate = jQuery('#calendar_date').val();
+    var calTime = jQuery('#calendar_time').val();
+
+    window.send_to_editor("[iip_calendar text=\"" + calText + "\" date=\"" + calDate + "\" time=\"" + calTime + "\" ]");
+}
+
 jQuery(document).ready(function($){
     $( "#countdown_date" ).datepicker({
-        dateFormat: "yy-mm-dd"
+        dateFormat: "yy-mm-dd",
+        firstDay: 7 
     });
     $('#countdown_time').timepicker({
+        timeFormat: 'h:mm p',
+        interval: 15,
+        minTime: '0',
+        maxTime: '11:45pm',
+        startTime: '0:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true,
+        zindex: 100051
+    });
+    $( "#calendar_date" ).datepicker({
+        dateFormat: "yy-mm-dd",
+        firstDay: 7 
+    });
+    $('#calendar_time').timepicker({
         timeFormat: 'h:mm p',
         interval: 15,
         minTime: '0',

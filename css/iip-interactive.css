@@ -53,6 +53,49 @@
   border-bottom: none;
 }
 
+/* Countdown */
+
+#clockwrap {
+  width: 100%;
+}
+
+#clockdiv h1{
+  color: #333;
+  font-weight: 400;
+  font-size: 1em;
+  margin: 20px 0px 10px;
+}
+
+#clockdiv{
+  font-family: sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  width: 70%;
+  margin: 0 15%;
+}
+
+#clockdiv > div{
+  padding: 0.8em;
+  border-radius: 0.3em;
+  background: #333;
+  display: inline-block;
+}
+
+#clockdiv div > span{
+  padding: 1em;
+  border-radius: 0.3em;
+  background: #777;
+  display: inline-block;
+  font-size: 1em;
+}
+
+#clockdiv .smalltext{
+  padding-top: 5px;
+  font-size: 0.8em;
+}
+
 @media (max-width: 782px) {
   
   .iip_chatroll {
