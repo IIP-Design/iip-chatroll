@@ -13,6 +13,10 @@
   font-weight:normal!important;
 }
 
+#TB_window table {
+  width: 100%;
+}
+
 /* Style the tab */
 div.tab {
     overflow: hidden;
@@ -56,4 +60,11 @@ div.tab button.active {
 /* Datepicker */
 .ui-datepicker {
   background: #efefef;
+}
+
+
+/* Calendar */
+
+#calendar input[type=text] {
+    width: 100%;
 }

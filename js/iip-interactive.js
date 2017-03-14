@@ -5,8 +5,40 @@ jQuery(document).ready(function($){
     $('.chatroll_topbar').toggleClass('reduced');
   });
 
-  var deadline = new Date($('#datetime').val());
+  var deadline = new Date($('#countdatetime').val());
   initializeClock('clockdiv', deadline);
+
+  var myCalendar = createCalendar({
+    options: {
+      class: 'addtocalendar',
+
+      // You can pass an ID. If you don't, one will be generated for you
+      id: 'calendar'
+    },
+    data: {
+
+      // Event title
+      title: $('#caltitle').val(),
+
+      // Event start date
+      start: new Date($('#caldatetime').val()),
+
+      // Event duration (IN MINUTES)
+      duration: $('#calduration').val(),   
+
+      // Event Address
+      address: $('#caladdress').val(),
+
+      // Event Description
+      description: $('#caldescription').val(),
+
+      // Button text
+      text: $('#caltext').val()
+      
+    }
+  });
+
+  document.querySelector('#iip_calendar').appendChild(myCalendar);
 });
 
 function getTimeRemaining(endtime) {

@@ -10,6 +10,7 @@
 add_action('wp_enqueue_scripts', 'iip_interactive_scripts');
 function iip_interactive_scripts() {
     wp_enqueue_script('iip_interactive_script', plugins_url('js/iip-interactive.js', __FILE__), array('jquery') );
+    wp_enqueue_script('addtocalendar', plugins_url('js/ouical.js', __FILE__) );
 }
 
 add_action('admin_enqueue_scripts', 'iip_interactive_admin_scripts');
@@ -21,6 +22,7 @@ function iip_interactive_admin_scripts() {
 add_action('wp_enqueue_scripts', 'iip_interactive_styles');
 function iip_interactive_styles() {
     wp_enqueue_style( 'iip_interactive_style', plugins_url('css/iip-interactive.css', __FILE__) );
+    wp_enqueue_style( 'addtocalendar_css', plugins_url('css/atc.css', __FILE__) );
 }
 
 add_action('admin_enqueue_scripts', 'iip_interactive_admin_styles');
@@ -63,8 +65,8 @@ function iip_countdown_shortcode($atts, $content=null) {
             ));
     $display = date("l, F j, Y", strtotime($date));
 
-    $shortcode .= '<div class="iip_countdown">
-                    <input type="hidden" id="datetime" value="'.$date.' '.$time.'" />
+    $shortcode = '<div class="iip_countdown">
+                    <input type="hidden" id="countdatetime" value="'.$date.' '.$time.'" />
                     <div id="clockwrap">
                       <div id="clockdiv">
                         <h1>'.$display.' at '.$time.'</h1>
@@ -95,22 +97,24 @@ add_shortcode('iip_calendar', 'iip_calendar_shortcode');
 function iip_calendar_shortcode($atts, $content=null) {
     extract(shortcode_atts(
             array(
-                  'title' => 'Chat',
-                  'width' => '450',
-                  'height' => '350',
-                  'id' => '',
-                  'name' => '',
-                  'domain' => 'chatroll-cloud-1.com',
-                  'align' => 'right',
-                  'offsetx' => '20',
-                  'offsety' => '0'
+                  'title' => 'IIP Interactive Event',
+                  'duration' => '60',
+                  'address' => '',
+                  'description' => '',
+                  'text' => 'Add Event to My Calendar',
+                  'date' => '',
+                  'time' => ''
                   ), $atts
             ));
 
-    $shortcode = '<style type="text/css">.iip_chatroll{'.$align.': '.$offsetx.'px; bottom: '.$offsety.'px;}.chatroll_topbar{width:'.$width.'px;}</style>';
-    $shortcode .= '<div class="iip_chatroll"><div class="chatroll_topbar">'.$title.'<div class="iip_toggle"><div class="iip_one"></div><div class="iip_two"></div></div></div>';
-    $shortcode .= '<iframe class="" width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://'.$domain.'/embed/chat/'.$name.'?id='.$id.'&platform=html"></iframe>';
-    $shortcode .= '</div>';
+    $shortcode = '<input type="hidden" id="caltitle" value="'.$title.'" />';
+    $shortcode .= '<input type="hidden" id="calduration" value="'.$duration.'" />';
+    $shortcode .= '<input type="hidden" id="caladdress" value="'.$address.'" />';
+    $shortcode .= '<input type="hidden" id="caldescription" value="'.$description.'" />';
+    $shortcode .= '<input type="hidden" id="caltext" value="'.$text.'" />';
+    $shortcode .= '<input type="hidden" id="caldatetime" value="'.$date.' '.$time.'" />';
+    $shortcode .= '<div id="iip_calendar"></div>';
+
     return $shortcode;
 }
 
@@ -238,8 +242,24 @@ function iip_interactive_tinymce() {
                         <table>
                             <tbody>
                                 <tr>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_title"><?php _e('Event Title', 'iip-chatroll'); ?></label></td>
+                                    <td style="padding: 0 0 10px;"><input type="text" id="calendar_title" value="IIP Live Event" /></td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_duration"><?php _e('Duration (in minutes)', 'iip-chatroll'); ?></label></td>
+                                    <td style="padding: 0 0 10px;"><input type="text" id="calendar_duration" maxlength="4" value="60" /></td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_address"><?php _e('Address/URL', 'iip-chatroll'); ?></label></td>
+                                    <td style="padding: 0 0 10px;"><input type="text" id="calendar_address" /></td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_description"><?php _e('Event Description', 'iip-chatroll'); ?></label></td>
+                                    <td style="padding: 0 0 10px;"><input type="text" id="calendar_description" /></td>
+                                </tr>
+                                <tr>
                                     <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_text"><?php _e('Button Text', 'iip-chatroll'); ?></label></td>
-                                    <td style="padding: 0 0 10px;"><input type="text" id="calendar_text" size="24" maxlength="24" value="Add to Calendar" /></td>
+                                    <td style="padding: 0 0 10px;"><input type="text" id="calendar_text" size="24" maxlength="24" value="Add Event to My Calendar" /></td>
                                 </tr>
                                 <tr>
                                     <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_date"><?php _e('Set Date', 'iip-chatroll'); ?></label></td>

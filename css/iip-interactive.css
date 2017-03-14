@@ -96,6 +96,26 @@
   font-size: 0.8em;
 }
 
+/* Calendar */
+
+#iip_calendar {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.addtocalendar {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.add-to-calendar-checkbox {
+  line-height: 60px;
+  color: white;
+  background: #b80000;
+  padding: 20px 40px;
+  cursor: pointer;
+}
+
 @media (max-width: 782px) {
   
   .iip_chatroll {

@@ -41,11 +41,15 @@ function insertCountdown(){
 }
 
 function insertCalendar(){
+    var calTitle = jQuery('#calendar_title').val();
+    var calDuration = jQuery('#calendar_duration').val();
+    var calAddress = jQuery('#calendar_address').val();
+    var calDescription = jQuery('#calendar_description').val();
     var calText = jQuery('#calendar_text').val();
     var calDate = jQuery('#calendar_date').val();
     var calTime = jQuery('#calendar_time').val();
 
-    window.send_to_editor("[iip_calendar text=\"" + calText + "\" date=\"" + calDate + "\" time=\"" + calTime + "\" ]");
+    window.send_to_editor("[iip_calendar title=\"" + calTitle + "\" duration=\"" + calDuration + "\" address=\"" + calAddress + "\" description=\"" + calDescription + "\" text=\"" + calText + "\" date=\"" + calDate + "\" time=\"" + calTime + "\" ]");
 }
 
 jQuery(document).ready(function($){
