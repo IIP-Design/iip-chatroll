@@ -28,6 +28,7 @@ function iip_interactive_styles() {
 add_action('admin_enqueue_scripts', 'iip_interactive_admin_styles');
 function iip_interactive_admin_styles() {
     wp_enqueue_style( 'iip_interactive_style_admin', plugins_url('css/iip-interactive-admin.css', __FILE__) );
+    wp_enqueue_style( 'jquery_ui_css', plugins_url('css/jquery-ui.min.css', __FILE__) );
     wp_enqueue_style( 'jquery_ui_theme', plugins_url('css/jquery-ui-theme.css', __FILE__) );
     wp_enqueue_style( 'jquery_timepicker_css', plugins_url('css/jquery.timepicker.min.css', __FILE__) );
 }
