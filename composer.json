@@ -1,7 +1,7 @@
 {
-    "name": "iip-design/iip-chatroll",
+    "name": "iip-design/iip-interactive",
     "type": "wordpress-plugin",
-    "description" : "Chatroll Shortcode for IIP Properties",
+    "description" : "Interactive Shortcodes for IIP Properties",
     "authors": [
         {
             "name": "Office of Design, Bureau of International Information Programs",
