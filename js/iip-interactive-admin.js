@@ -81,6 +81,6 @@ jQuery(document).ready(function($){
         dynamic: false,
         dropdown: true,
         scrollbar: true,
-        zindex: 100051
+        zindex: 999999
     });
 });
