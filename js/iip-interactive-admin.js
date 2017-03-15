@@ -36,8 +36,10 @@ function insertChatroll(){
 function insertCountdown(){
     var countDate = jQuery('#countdown_date').val();
     var countTime = jQuery('#countdown_time').val();
+    var countText = jQuery('#countdown_text').val();
+    var countZone = jQuery('#countdown_zone').val();
 
-    window.send_to_editor("[iip_countdown date=\"" + countDate + "\" time=\"" + countTime + "\" ]");
+    window.send_to_editor("[iip_countdown date=\"" + countDate + "\" time=\"" + countTime + "\" text=\"" + countText + "\" zone=\"" + countZone + "\" ]");
 }
 
 function insertCalendar(){
@@ -48,8 +50,9 @@ function insertCalendar(){
     var calText = jQuery('#calendar_text').val();
     var calDate = jQuery('#calendar_date').val();
     var calTime = jQuery('#calendar_time').val();
+    var calZone = jQuery('#calendar_zone').val();
 
-    window.send_to_editor("[iip_calendar title=\"" + calTitle + "\" duration=\"" + calDuration + "\" address=\"" + calAddress + "\" description=\"" + calDescription + "\" text=\"" + calText + "\" date=\"" + calDate + "\" time=\"" + calTime + "\" ]");
+    window.send_to_editor("[iip_calendar title=\"" + calTitle + "\" duration=\"" + calDuration + "\" address=\"" + calAddress + "\" description=\"" + calDescription + "\" text=\"" + calText + "\" date=\"" + calDate + "\" time=\"" + calTime + "\" zone=\"" + calZone + "\" ]");
 }
 
 jQuery(document).ready(function($){

@@ -62,34 +62,19 @@ function iip_countdown_shortcode($atts, $content=null) {
             array(
                   'date' => '',
                   'time' => '',
+                  'text' => 'true',
+                  'zone' => 'UTC'
                   ), $atts
             ));
     $display = date("l, F j, Y", strtotime($date));
 
-    $shortcode = '<div class="iip_countdown">
-                    <input type="hidden" id="countdatetime" value="'.$date.' '.$time.'" />
-                    <div id="clockwrap">
-                      <div id="clockdiv">
-                        <h1>'.$display.' at '.$time.'</h1>
-                        <div>
-                          <span class="days"></span>
-                          <div class="smalltext">Days</div>
-                        </div>
-                        <div>
-                          <span class="hours"></span>
-                          <div class="smalltext">Hours</div>
-                        </div>
-                        <div>
-                          <span class="minutes"></span>
-                          <div class="smalltext">Minutes</div>
-                        </div>
-                        <div>
-                          <span class="seconds"></span>
-                          <div class="smalltext">Seconds</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>';
+    $shortcode = '<div class="iip_countdown"><input type="hidden" id="countdatetime" value="'.$date.' '.$time.' ' . $zone . '" /><div id="clockwrap"><div id="clockdiv">';
+    if ( $text === 'true' ) $shortcode .= '<h1>'.$display.' at '.$time.' ' . $zone . '</h1>';
+    $shortcode .= '<div><span class="days"></span><div class="smalltext">Days</div></div> ';
+    $shortcode .= '<div><span class="hours"></span><div class="smalltext">Hours</div></div> ';
+    $shortcode .= '<div><span class="minutes"></span><div class="smalltext">Minutes</div></div> ';
+    $shortcode .= '<div><span class="seconds"></span><div class="smalltext">Seconds</div></div>';
+    $shortcode .= '</div></div></div>';
 
     return $shortcode;
 }
@@ -104,7 +89,8 @@ function iip_calendar_shortcode($atts, $content=null) {
                   'description' => '',
                   'text' => 'Add Event to My Calendar',
                   'date' => '',
-                  'time' => ''
+                  'time' => '',
+                  'zone' => 'UTC'
                   ), $atts
             ));
 
@@ -113,7 +99,7 @@ function iip_calendar_shortcode($atts, $content=null) {
     $shortcode .= '<input type="hidden" id="caladdress" value="'.$address.'" />';
     $shortcode .= '<input type="hidden" id="caldescription" value="'.$description.'" />';
     $shortcode .= '<input type="hidden" id="caltext" value="'.$text.'" />';
-    $shortcode .= '<input type="hidden" id="caldatetime" value="'.$date.' '.$time.'" />';
+    $shortcode .= '<input type="hidden" id="caldatetime" value="'.$date.' '.$time.' '.$zone.'" />';
     $shortcode .= '<div id="iip_calendar"></div>';
 
     return $shortcode;
@@ -225,6 +211,19 @@ function iip_interactive_tinymce() {
                                     <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_time"><?php _e('Set Time', 'iip-chatroll'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input id="countdown_time" /></td>
                                 </tr>
+                                <tr>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_zone"><?php _e('Set Timezone', 'iip-chatroll'); ?></label></td>
+                                    <td style="padding: 0 0 10px;"><input id="countdown_zone" maxlength="6" /></td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_text"><?php _e('Date Text', 'iip-chatroll'); ?></label></td>
+                                    <td style="padding: 0 0 10px;">
+                                        <select id="countdown_text">
+                                            <option value="true" default>Show</option>
+                                            <option value="false">Hide</option>
+                                        </select><br/>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -269,6 +268,10 @@ function iip_interactive_tinymce() {
                                 <tr>
                                     <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_time"><?php _e('Set Time', 'iip-chatroll'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input id="calendar_time" /></td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_zone"><?php _e('Set Timezone', 'iip-chatroll'); ?></label></td>
+                                    <td style="padding: 0 0 10px;"><input id="calendar_zone" maxlength="6" /></td>
                                 </tr>
                             </tbody>
                         </table>
