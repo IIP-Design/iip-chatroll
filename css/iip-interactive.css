@@ -72,8 +72,8 @@
   display: block;
   font-weight: 100;
   text-align: center;
-  width: 500px;
   margin: 0 auto;
+  line-height: 1;
 }
 
 #clockdiv > div{
@@ -92,7 +92,7 @@
 }
 
 #clockdiv .smalltext{
-  padding-top: 5px;
+  padding-top: 8px;
   font-size: 0.8em;
 }
 
@@ -131,7 +131,7 @@
   }
 
   #clockdiv{
-    width: 100%;
+    width: 100%!important;
   }
 
   .addtocalendar {

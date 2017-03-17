@@ -63,12 +63,13 @@ function iip_countdown_shortcode($atts, $content=null) {
                   'date' => '',
                   'time' => '',
                   'text' => 'true',
+                  'width' => '500',
                   'zone' => 'UTC'
                   ), $atts
             ));
     $display = date("l, F j, Y", strtotime($date));
 
-    $shortcode = '<div class="iip_countdown"><input type="hidden" id="countdatetime" value="'.$date.' '.$time.' ' . $zone . '" /><div id="clockwrap"><div id="clockdiv">';
+    $shortcode = '<div class="iip_countdown"><input type="hidden" id="countdatetime" value="'.$date.' '.$time.' ' . $zone . '" /><div id="clockwrap"><div id="clockdiv" style="width:'.$width.'px">';
     if ( $text === 'true' ) $shortcode .= '<h1>'.$display.' at '.$time.' ' . $zone . '</h1>';
     $shortcode .= '<div><span class="days"></span><div class="smalltext">Days</div></div> ';
     $shortcode .= '<div><span class="hours"></span><div class="smalltext">Hours</div></div> ';
@@ -214,6 +215,10 @@ function iip_interactive_tinymce() {
                                 <tr>
                                     <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_zone"><?php _e('Set Timezone', 'iip-chatroll'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input id="countdown_zone" maxlength="6" /></td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_width"><?php _e('Set Width (in pixels)', 'iip-chatroll'); ?></label></td>
+                                    <td style="padding: 0 0 10px;"><input id="countdown_width" maxlength="4" value="500" />px</td>
                                 </tr>
                                 <tr>
                                     <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_text"><?php _e('Date Text', 'iip-chatroll'); ?></label></td>

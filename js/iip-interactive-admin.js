@@ -37,9 +37,10 @@ function insertCountdown(){
     var countDate = jQuery('#countdown_date').val();
     var countTime = jQuery('#countdown_time').val();
     var countText = jQuery('#countdown_text').val();
+    var countWidth = jQuery('#countdown_width').val();
     var countZone = jQuery('#countdown_zone').val();
 
-    window.send_to_editor("[iip_countdown date=\"" + countDate + "\" time=\"" + countTime + "\" text=\"" + countText + "\" zone=\"" + countZone + "\" ]");
+    window.send_to_editor("[iip_countdown date=\"" + countDate + "\" time=\"" + countTime + "\" text=\"" + countText + "\" width=\"" + countWidth + "\" zone=\"" + countZone + "\" ]");
 }
 
 function insertCalendar(){
