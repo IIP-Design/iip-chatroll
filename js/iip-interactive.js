@@ -6,7 +6,14 @@ jQuery(document).ready(function($){
   });
 
   var deadline = new Date($('#countdatetime').val());
-  initializeClock('clockdiv', deadline);
+  var clockid = 'clockdiv';
+
+  initializeClock(clockid, deadline);
+  resizeClock(clockid);
+
+  $( window ).resize(function() {
+    resizeClock(clockid);
+  });
 
   var myCalendar = createCalendar({
     options: {
@@ -56,6 +63,16 @@ function getTimeRemaining(endtime) {
   };
 }
 
+function resizeClock(id){
+  var clock = document.getElementById(id);
+
+  var clockWidth = clock.clientWidth;
+  var bodyWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 4;
+  var fontSize = clockWidth/bodyWidth+'vw';
+        
+  clock.style.fontSize = fontSize;
+}
+
 function initializeClock(id, endtime) {
   var clock = document.getElementById(id);
   var daysSpan = clock.querySelector('.days');
@@ -74,15 +91,7 @@ function initializeClock(id, endtime) {
     if (t.total <= 0) {
       clearInterval(timeinterval);
     }
-    resizeClock();
-  }
-  
-  function resizeClock(){
-    var clockWidth = clock.clientWidth;
-    var bodyWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 4;
-    var fontSize = clockWidth/bodyWidth+'vw';
-          
-    clock.style.fontSize = fontSize;
+
   }
   
   updateClock();

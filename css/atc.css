@@ -8,14 +8,13 @@
 
 .add-to-calendar-checkbox:checked ~ a {
   display: block;
-    width: 50%;
-    margin: 0 auto;
-    background: #fff;
-    color: #333;
-    padding: 4px;
-    border-left: 1px solid #eee;
-    border-right: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+  margin: 0 auto;
+  background: #fff;
+  color: #333;
+  padding: 4px;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 }
 
 input[type=checkbox].add-to-calendar-checkbox {

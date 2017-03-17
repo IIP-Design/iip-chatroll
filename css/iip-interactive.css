@@ -69,11 +69,11 @@
 #clockdiv{
   font-family: sans-serif;
   color: #fff;
-  display: inline-block;
+  display: block;
   font-weight: 100;
   text-align: center;
-  width: 70%;
-  margin: 0 15%;
+  width: 500px;
+  margin: 0 auto;
 }
 
 #clockdiv > div{
@@ -104,16 +104,16 @@
 }
 
 .addtocalendar {
-  width: 50%;
+  width: 324px;
   margin: 0 auto;
 }
 
 .add-to-calendar-checkbox {
-  line-height: 60px;
   color: white;
   background: #b80000;
   padding: 20px 40px;
   cursor: pointer;
+  display: block;
 }
 
 @media (max-width: 782px) {
@@ -130,4 +130,11 @@
     width: 100%!important;
   }
 
+  #clockdiv{
+    width: 100%;
+  }
+
+  .addtocalendar {
+    width: 100%;
+  }
 }
