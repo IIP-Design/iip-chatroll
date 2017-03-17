@@ -5,47 +5,52 @@ jQuery(document).ready(function($){
     $('.chatroll_topbar').toggleClass('reduced');
   });
 
-  var deadline = new Date($('#countdatetime').val());
-  var clockid = 'clockdiv';
+  if( $('#clockdiv').length >0 ){
+    var deadline = new Date($('#countdatetime').val());
+    var clockid = 'clockdiv';
 
-  initializeClock(clockid, deadline);
-  resizeClock(clockid);
-
-  $( window ).resize(function() {
+    initializeClock(clockid, deadline);
     resizeClock(clockid);
-  });
 
-  var myCalendar = createCalendar({
-    options: {
-      class: 'addtocalendar',
+    $( window ).resize(function() {
+      resizeClock(clockid);
+    });
+  }
 
-      // You can pass an ID. If you don't, one will be generated for you
-      id: 'calendar'
-    },
-    data: {
 
-      // Event title
-      title: $('#caltitle').val(),
+  if( $('#iip_calendar').length >0 ){
+    var myCalendar = createCalendar({
+      options: {
+        class: 'addtocalendar',
 
-      // Event start date
-      start: new Date($('#caldatetime').val()),
+        // You can pass an ID. If you don't, one will be generated for you
+        id: 'calendar'
+      },
+      data: {
 
-      // Event duration (IN MINUTES)
-      duration: $('#calduration').val(),   
+        // Event title
+        title: $('#caltitle').val(),
 
-      // Event Address
-      address: $('#caladdress').val(),
+        // Event start date
+        start: new Date($('#caldatetime').val()),
 
-      // Event Description
-      description: $('#caldescription').val(),
+        // Event duration (IN MINUTES)
+        duration: $('#calduration').val(),   
 
-      // Button text
-      text: $('#caltext').val()
-      
-    }
-  });
+        // Event Address
+        address: $('#caladdress').val(),
 
-  document.querySelector('#iip_calendar').appendChild(myCalendar);
+        // Event Description
+        description: $('#caldescription').val(),
+
+        // Button text
+        text: $('#caltext').val()
+        
+      }
+    });
+
+    document.querySelector('#iip_calendar').appendChild(myCalendar);
+  }
 });
 
 function getTimeRemaining(endtime) {

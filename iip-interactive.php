@@ -9,7 +9,7 @@
 
 add_action('wp_enqueue_scripts', 'iip_interactive_scripts');
 function iip_interactive_scripts() {
-    wp_enqueue_script('iip_interactive_script', plugins_url('js/iip-interactive.js', __FILE__), array('jquery') );
+    wp_register_script('iip_interactive_script', plugins_url('js/iip-interactive.js', __FILE__), array('jquery') );
     wp_enqueue_script('addtocalendar', plugins_url('js/ouical.js', __FILE__) );
 }
 
@@ -49,6 +49,8 @@ function iip_chatroll_shortcode($atts, $content=null) {
                   ), $atts
             ));
 
+    wp_enqueue_script('iip_interactive_script');
+
     $shortcode = '<style type="text/css">.iip_chatroll{'.$align.': '.$offsetx.'px; bottom: '.$offsety.'px;}.chatroll_topbar{width:'.$width.'px;}</style>';
     $shortcode .= '<div class="iip_chatroll"><div class="chatroll_topbar">'.$title.'<div class="iip_toggle"><div class="iip_one"></div><div class="iip_two"></div></div></div>';
     $shortcode .= '<iframe class="" width="'.$width.'" height="'.$height.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://'.$domain.'/embed/chat/'.$name.'?id='.$id.'&platform=html"></iframe>';
@@ -67,6 +69,9 @@ function iip_countdown_shortcode($atts, $content=null) {
                   'zone' => 'UTC'
                   ), $atts
             ));
+
+    wp_enqueue_script('iip_interactive_script');
+
     $display = date("l, F j, Y", strtotime($date));
 
     $shortcode = '<div class="iip_countdown"><input type="hidden" id="countdatetime" value="'.$date.' '.$time.' ' . $zone . '" /><div id="clockwrap"><div id="clockdiv" style="width:'.$width.'px">';
@@ -94,6 +99,8 @@ function iip_calendar_shortcode($atts, $content=null) {
                   'zone' => 'UTC'
                   ), $atts
             ));
+    
+    wp_enqueue_script('iip_interactive_script');
 
     $shortcode = '<input type="hidden" id="caltitle" value="'.$title.'" />';
     $shortcode .= '<input type="hidden" id="calduration" value="'.$duration.'" />';
@@ -218,7 +225,7 @@ function iip_interactive_tinymce() {
                                 </tr>
                                 <tr>
                                     <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_width"><?php _e('Set Width (in pixels)', 'iip-chatroll'); ?></label></td>
-                                    <td style="padding: 0 0 10px;"><input id="countdown_width" maxlength="4" value="500" />px</td>
+                                    <td style="padding: 0 0 10px;"><input id="countdown_width" maxlength="4" value="500" /> px</td>
                                 </tr>
                                 <tr>
                                     <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_text"><?php _e('Date Text', 'iip-chatroll'); ?></label></td>
