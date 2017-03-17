@@ -67,9 +67,9 @@ function initializeClock(id, endtime) {
     var t = getTimeRemaining(endtime);
 
     daysSpan.innerHTML = ( t.days <= 0 ) ? 0 : t.days;
-    hoursSpan.innerHTML = ( t.hours <= 0 ) ? 0 : ('0' + t.hours).slice(-2);
-    minutesSpan.innerHTML = ( t.minutes <= 0 ) ? 0 : ('0' + t.minutes).slice(-2);
-    secondsSpan.innerHTML = ( t.seconds <= 0 ) ? 0 : ('0' + t.seconds).slice(-2);
+    hoursSpan.innerHTML = ( t.hours <= 0 ) ? '00' : ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ( t.minutes <= 0 ) ? '00' : ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ( t.seconds <= 0 ) ? '00' : ('0' + t.seconds).slice(-2);
     
     if (t.total <= 0) {
       clearInterval(timeinterval);
