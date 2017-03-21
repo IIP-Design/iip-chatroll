@@ -1,2 +1,2 @@
-# iip-chatroll
-Chatroll Shortcode for IIP Properties
+# IIP Interactive Items Plugin
+Chatroll, Countdown, and Add to Calendar Shortcodes for IIP Properties
