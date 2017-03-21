@@ -58,6 +58,7 @@ function insertCalendar(){
 
 jQuery(document).ready(function($){
     $( "#countdown_date" ).datepicker({
+        dateFormat: "mm/dd/yy",
         firstDay: 7 
     });
     $('#countdown_time').timepicker({
@@ -72,6 +73,7 @@ jQuery(document).ready(function($){
         zindex: 999999
     });
     $( "#calendar_date" ).datepicker({
+        dateFormat: "mm/dd/yy",
         firstDay: 7 
     });
     $('#calendar_time').timepicker({
