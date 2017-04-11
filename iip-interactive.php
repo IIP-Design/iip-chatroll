@@ -73,13 +73,14 @@ function iip_countdown_shortcode($atts, $content=null) {
     wp_enqueue_script('iip_interactive_script');
 
     $display = date("l, F j, Y", strtotime($date));
+    $days = 
 
     $shortcode = '<div class="iip_countdown"><input type="hidden" id="countdatetime" value="'.$date.' '.$time.' ' . $zone . '" /><div id="clockwrap"><div id="clockdiv" style="width:'.$width.'px">';
     if ( $text === 'true' ) $shortcode .= '<h1>'.$display.' at '.$time.' ' . $zone . '</h1>';
-    $shortcode .= '<div><span class="days"></span><div class="smalltext">'. _e('Days', 'iip-interactive') . '</div></div> ';
-    $shortcode .= '<div><span class="hours"></span><div class="smalltext">'. _e('Hours', 'iip-interactive') . '</div></div> ';
-    $shortcode .= '<div><span class="minutes"></span><div class="smalltext">'. _e('Minutes', 'iip-interactive') . '</div></div> ';
-    $shortcode .= '<div><span class="seconds"></span><div class="smalltext">'. _e('Seconds', 'iip-interactive') . '</div></div>';
+    $shortcode .= '<div><span class="days"></span><div class="smalltext">'. __('Days', 'iip-interactive') . '</div></div> ';
+    $shortcode .= '<div><span class="hours"></span><div class="smalltext">'. __('Hours', 'iip-interactive') . '</div></div> ';
+    $shortcode .= '<div><span class="minutes"></span><div class="smalltext">'. __('Minutes', 'iip-interactive') . '</div></div> ';
+    $shortcode .= '<div><span class="seconds"></span><div class="smalltext">'. __('Seconds', 'iip-interactive') . '</div></div>';
     $shortcode .= '</div></div></div>';
 
     return $shortcode;
