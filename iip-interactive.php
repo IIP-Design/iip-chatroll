@@ -2,8 +2,9 @@
 /**
  * Plugin Name: Interactive Shortcodes for IIP Properties
  * Description: Simple shortcodes to display interactive elements on IIP properties.
- * Version: 2.0.0
+ * Version: 2.1.0
  * Author: Scott Gustas
+ * Text Domain: iip-interactive
  * License: GPLv2 or later
  */
 
@@ -71,15 +72,16 @@ function iip_countdown_shortcode($atts, $content=null) {
             ));
 
     wp_enqueue_script('iip_interactive_script');
-
-    $display = date("l, F j, Y", strtotime($date));
+    
+    $datetime = $date . ' ' . $time;
+    $display = date_i18n('l, F jS, Y '. __('\a\t', 'iip-interactive') .' g:i A T', strtotime($datetime));
 
     $shortcode = '<div class="iip_countdown"><input type="hidden" id="countdatetime" value="'.$date.' '.$time.' ' . $zone . '" /><div id="clockwrap"><div id="clockdiv" style="width:'.$width.'px">';
-    if ( $text === 'true' ) $shortcode .= '<h1>'.$display.' at '.$time.' ' . $zone . '</h1>';
-    $shortcode .= '<div><span class="days"></span><div class="smalltext">Days</div></div> ';
-    $shortcode .= '<div><span class="hours"></span><div class="smalltext">Hours</div></div> ';
-    $shortcode .= '<div><span class="minutes"></span><div class="smalltext">Minutes</div></div> ';
-    $shortcode .= '<div><span class="seconds"></span><div class="smalltext">Seconds</div></div>';
+    if ( $text === 'true' ) $shortcode .= '<h1>'.$display.'</h1>';
+    $shortcode .= '<div><span class="days"></span><div class="smalltext">'. __('Days', 'iip-interactive') . '</div></div> ';
+    $shortcode .= '<div><span class="hours"></span><div class="smalltext">'. __('Hours', 'iip-interactive') . '</div></div> ';
+    $shortcode .= '<div><span class="minutes"></span><div class="smalltext">'. __('Minutes', 'iip-interactive') . '</div></div> ';
+    $shortcode .= '<div><span class="seconds"></span><div class="smalltext">'. __('Seconds', 'iip-interactive') . '</div></div>';
     $shortcode .= '</div></div></div>';
 
     return $shortcode;
@@ -154,31 +156,31 @@ function iip_interactive_tinymce() {
                         <table>
                             <tbody>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_title"><?php _e('Window Title', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_title"><?php _e('Window Title', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input type="text" id="chatroll_title" size="16" maxlength="16" value="Chat" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_width"><?php _e('Width', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_width"><?php _e('Width', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input type="text" id="chatroll_width" size="5" value="450" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_height"><?php _e('Height', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_height"><?php _e('Height', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input type="text" id="chatroll_height" size="5" value="350" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_id"><?php _e('ID', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_id"><?php _e('ID', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input type="text" id="chatroll_id" size="20" value="" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_name"><?php _e('Name', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_name"><?php _e('Name', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input type="text" id="chatroll_name" size="20" value="" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_domain"><?php _e('Domain', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_domain"><?php _e('Domain', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input type="text" id="chatroll_domain" size="40" value="chatroll-cloud-1.com" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_align"><?php _e('Alignment', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_align"><?php _e('Alignment', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;">
                                         <select id="chatroll_align">
                                             <option value="right">Right</option>
@@ -187,11 +189,11 @@ function iip_interactive_tinymce() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_offsetx"><?php _e('Offset X', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_offsetx"><?php _e('Offset X', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input type="text" id="chatroll_offsetx" size="4" value="20" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_offsety"><?php _e('Offset Y', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="chatroll_offsety"><?php _e('Offset Y', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input type="text" id="chatroll_offsety" size="4" value="0" /></td>
                                 </tr>
                             </tbody>
@@ -212,23 +214,23 @@ function iip_interactive_tinymce() {
                         <table>
                             <tbody>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_date"><?php _e('Set Date', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_date"><?php _e('Set Date', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input id="countdown_date" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_time"><?php _e('Set Time', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_time"><?php _e('Set Time', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input id="countdown_time" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_zone"><?php _e('Set Timezone', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_zone"><?php _e('Set Timezone', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input id="countdown_zone" maxlength="6" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_width"><?php _e('Set Width (in pixels)', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_width"><?php _e('Set Width (in pixels)', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input id="countdown_width" maxlength="4" value="500" /> px</td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_text"><?php _e('Date Text', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="countdown_text"><?php _e('Date Text', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;">
                                         <select id="countdown_text">
                                             <option value="true" default>Show</option>
@@ -254,35 +256,35 @@ function iip_interactive_tinymce() {
                         <table>
                             <tbody>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_title"><?php _e('Event Title', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_title"><?php _e('Event Title', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input type="text" id="calendar_title" value="IIP Live Event" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_duration"><?php _e('Duration (in minutes)', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_duration"><?php _e('Duration (in minutes)', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input type="text" id="calendar_duration" maxlength="4" value="60" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_address"><?php _e('Address/URL', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_address"><?php _e('Address/URL', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input type="text" id="calendar_address" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_description"><?php _e('Event Description', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_description"><?php _e('Event Description', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input type="text" id="calendar_description" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_text"><?php _e('Button Text', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_text"><?php _e('Button Text', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input type="text" id="calendar_text" size="24" maxlength="24" value="Add Event to My Calendar" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_date"><?php _e('Set Date', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_date"><?php _e('Set Date', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input id="calendar_date" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_time"><?php _e('Set Time', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_time"><?php _e('Set Time', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input id="calendar_time" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_zone"><?php _e('Set Timezone', 'iip-chatroll'); ?></label></td>
+                                    <td valign="top" style="padding: 0 15px 5px 0;"><label for="calendar_zone"><?php _e('Set Timezone', 'iip-interactive'); ?></label></td>
                                     <td style="padding: 0 0 10px;"><input id="calendar_zone" maxlength="6" /></td>
                                 </tr>
                             </tbody>
