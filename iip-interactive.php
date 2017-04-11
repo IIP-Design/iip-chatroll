@@ -73,7 +73,6 @@ function iip_countdown_shortcode($atts, $content=null) {
     wp_enqueue_script('iip_interactive_script');
 
     $display = date("l, F j, Y", strtotime($date));
-    $days = 
 
     $shortcode = '<div class="iip_countdown"><input type="hidden" id="countdatetime" value="'.$date.' '.$time.' ' . $zone . '" /><div id="clockwrap"><div id="clockdiv" style="width:'.$width.'px">';
     if ( $text === 'true' ) $shortcode .= '<h1>'.$display.' at '.$time.' ' . $zone . '</h1>';
