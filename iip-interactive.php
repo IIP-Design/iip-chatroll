@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Interactive Shortcodes for IIP Properties
  * Description: Simple shortcodes to display interactive elements on IIP properties.
- * Version: 2.0.0
+ * Version: 2.1.0
  * Author: Scott Gustas
  * Text Domain: iip-interactive
  * License: GPLv2 or later
@@ -74,7 +74,7 @@ function iip_countdown_shortcode($atts, $content=null) {
     wp_enqueue_script('iip_interactive_script');
     
     $datetime = $date . ' ' . $time;
-    $display = date_i18n('l, F jS, Y '.__('\a\t', 'iip-interactive') .' g:i A T', strtotime($datetime));
+    $display = date_i18n('l, F jS, Y '. __('\a\t', 'iip-interactive') .' g:i A T', strtotime($datetime));
 
     $shortcode = '<div class="iip_countdown"><input type="hidden" id="countdatetime" value="'.$date.' '.$time.' ' . $zone . '" /><div id="clockwrap"><div id="clockdiv" style="width:'.$width.'px">';
     if ( $text === 'true' ) $shortcode .= '<h1>'.$display.'</h1>';
