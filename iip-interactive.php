@@ -4,6 +4,7 @@
  * Description: Simple shortcodes to display interactive elements on IIP properties.
  * Version: 2.0.0
  * Author: Scott Gustas
+ * Text Domain: iip-interactive
  * License: GPLv2 or later
  */
 
