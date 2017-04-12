@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Interactive Shortcodes for IIP Properties
  * Description: Simple shortcodes to display interactive elements on IIP properties.
- * Version: 2.1.0
+ * Version: 2.1.2
  * Author: Scott Gustas
  * Text Domain: iip-interactive
  * License: GPLv2 or later
