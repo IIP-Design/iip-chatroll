@@ -74,7 +74,9 @@ function iip_countdown_shortcode($atts, $content=null) {
     wp_enqueue_script('iip_interactive_script');
     
     $datetime = $date . ' ' . $time;
-    $display = date_i18n('l, F jS, Y '. __('\a\t', 'iip-interactive') .' g:i A T', strtotime($datetime));
+    $timestring = __('l, F jS, Y', 'iip-interactive') . ' ' . __('\a\t', 'iip-interactive') . ' ' . __('g:i A T', 'iip-interactive');
+    
+    $display = date_i18n( $timestring, strtotime($datetime) );
 
     $shortcode = '<div class="iip_countdown"><input type="hidden" id="countdatetime" value="'.$date.' '.$time.' ' . $zone . '" /><div id="clockwrap"><div id="clockdiv" style="width:'.$width.'px">';
     if ( $text === 'true' ) $shortcode .= '<h1>'.$display.'</h1>';
