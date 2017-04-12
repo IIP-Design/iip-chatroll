@@ -73,10 +73,16 @@ function iip_countdown_shortcode($atts, $content=null) {
 
     wp_enqueue_script('iip_interactive_script');
     
-    $datetime = $date . ' ' . $time;
+    $dateStr = strtotime($date . ' ' . $time . ' ' . $zone);
     $timestring = __('l, F jS, Y', 'iip-interactive') . ' ' . __('\a\t', 'iip-interactive') . ' ' . __('g:i A T', 'iip-interactive');
     
-    $display = date_i18n( $timestring, strtotime($datetime) );
+    $tz = new DateTimeZone( get_option( 'timezone_string' ) );
+    $tz2 = new DateTimeZone('UTC');
+    $t = new DateTime('now', $tz);
+    $t2 = new DateTime('now', $tz2);
+    $offset_time = $tz->getOffset($t) - $tz2->getOffset($t2);
+    
+    $display = date_i18n( $timestring, $dateStr + $offset_time );
 
     $shortcode = '<div class="iip_countdown"><input type="hidden" id="countdatetime" value="'.$date.' '.$time.' ' . $zone . '" /><div id="clockwrap"><div id="clockdiv" style="width:'.$width.'px">';
     if ( $text === 'true' ) $shortcode .= '<h1>'.$display.'</h1>';
